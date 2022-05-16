@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+		<div class="container">
+		<div id="brandname">
+			Results of the similarity test
+		</div>
+		<h2>Here are multiple similar Instagram content creators:</h2>
+		
+	</div>
+	</header>
+{% block content %}
+
+
+  <table id='result' class='display'>
+    <thead>
+      <tr>
+      {% for header in headers %}
+        <th>{{header}}</th>
+      {% endfor %}
+      </tr>
+    </thead>
+
+    <tbody>
+    {% for object in objects %}	
+      <tr>
+  	{% for item in object %}
+        <td>{{item}}</td>
+      {% endfor %}
+      </tr>
+    {% endfor %}		
+    </tbody>
+  </table>
+
+
+{% endblock %}
+</body>
+</html>

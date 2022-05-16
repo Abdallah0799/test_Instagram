@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+	<header>
+		<div class="container">
+		<div id="brandname">
+			Content creators similarity
+		</div>
+		<h2>This tool gives you similarity between content creators</h2>
+		
+	</div>
+	</header>
+
+	<div class="ml-container">
+
+		<form action="{{ url_for('predict')}}" method="POST">
+		<p>Enter the user name of any content creator</p>
+		<!-- <input type="text" name="comment"/> -->
+		<textarea name="username" rows="1" cols="20"></textarea>
+		<br/>
+        <p>Enter the number of similar users you want to search</p>
+        <textarea name="n" rows="1" cols="5"></textarea>
+		<br/>
+
+		<input type="submit" class="btn-info" value="predict">
+		
+	</form>
+
+    {% block content %}
+    {% if alert %}
+    <p>{{alert}}</p>
+    {% endif %}
+    {% endblock %}
+		
+	</div>
+
+	
+	
+
+</body>
+</html>
