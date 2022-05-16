@@ -22,6 +22,7 @@ def index():
 def predict():
     username = request.form['username']
     n = request.form['n']
+    sessionid = request.form['sessionid']
     url = base_url+username+'/?__a=1'
     
     try:
@@ -30,7 +31,15 @@ def predict():
         return render_template('index.html', alert="Veuillez saisir un numero valide")
     
     try:
-        r = requests.get(url)
+        r = requests.get(
+                    "https://www.instagram.com/{}/?__a=1".format(str(username)),
+                    headers={
+                        "Accept-Encoding": "gzip, deflate",
+                        "Accept": "*/*",
+                        "Connection": "keep-alive",
+                        "Cookie": "sessionid=" + sessionid,
+                    },
+                )
         doc = r.json()
     except:
         return render_template('index.html', alert = 'Ce nom d utilisateur nexiste pas ou alors Instagram limite votre activité')
