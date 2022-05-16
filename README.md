@@ -8,4 +8,4 @@ In order to run this API, you will first have to install the required packages w
 
 Then you will be able to run the API with command `python src/app.py`
 
-Finally you can access the user interface http://localhost:5000/
+Finally you can access the user interface on http://localhost:5000/
