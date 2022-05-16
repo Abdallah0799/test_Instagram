@@ -7,3 +7,5 @@ It also provides an API allowing to find similarities between a user defined con
 In order to run this API, you will first have to install the required packages with command :  `pip install -r requirements.txt` 
 
 Then you will be able to run the API with command `python src/app.py`
+
+Finally you can access the user interface <href = http://localhost:5000/> http://localhost:5000/ </href>
