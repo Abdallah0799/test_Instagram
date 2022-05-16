@@ -30,14 +30,14 @@ def predict():
         return render_template('index.html', alert="Veuillez saisir un numero valide")
     
     try:
-        r = requests.get(base_url)
-        #doc = r.json()
+        r = requests.get(url)
+        doc = r.json()
     except:
         return render_template('index.html', alert = 'Ce nom d utilisateur nexiste pas ou alors Instagram limite votre activité')
     
     
-    f = open('test2.json')
-    doc = json.load(f)
+    #f = open('test2.json')
+    #doc = json.load(f)
     
     titre_et_bio, description, followers = getInfosFromJson(doc)
     d_tb, d_p, d_f = getDistances(titre_et_bio, description, followers)
