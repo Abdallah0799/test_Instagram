@@ -3,37 +3,41 @@
 <head>
 	<title>Home</title>
 	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+	
 </head>
 <body>
-
-	<header>
-		<div class="container">
-		<div id="brandname">
-			Content creators similarity
+	<div class="container-fluid">
+	<div class="jumbotron">
+        
+		<div class="row" style="text-align: center;">
+		  <div class="col-md-12">
+			<i class="fas fa-cog"><h1 class="display-4" style="text-align: center;">Similarity between content creators</h1></i> 
+			<p style="text-align: center;font-size: 18px;">This tool gives you the similarity between a content creator and the n most similar users</p>
+		  </div>
+  
 		</div>
-		<h2>This tool gives you similarity between content creators</h2>
-		
 	</div>
-	</header>
 
-	<div class="ml-container">
+
+	<div class = 'row' style="text-align: left; padding-left: 100px;">
+		
+		<div class="ml-container">
 
 		<form action="{{ url_for('predict')}}" method="POST">
 		<p>Enter the user name of any content creator</p>
 		<!-- <input type="text" name="comment"/> -->
-		<textarea name="username" rows="1" cols="20"></textarea>
+		<input class="form-control form-control-sm" type="text" name="username" required >
 		<br/>
         <p>Enter the number of similar users you want to search</p>
-        <textarea name="n" rows="1" cols="5"></textarea>
+        <input class="form-control form-control-sm" type="text" name="n" col="5" required >
 		<br/>
 		<p>Enter your session id</p>
-        <textarea name="sessionid" rows="1" cols="20"></textarea>
+        <input class="form-control form-control-sm" type="text" name="sessionid" required >
 		<br/>
-
-		<input type="submit" class="btn-info" value="predict">
+		<p></p>
+		<input type="submit" class="btn-info" value="Get similar users !">
 		
-	</form>
+	    </form>
 
     {% block content %}
     {% if alert %}
@@ -43,6 +47,8 @@
 		
 	</div>
 
+</div>
+</div>
 	
 	
 

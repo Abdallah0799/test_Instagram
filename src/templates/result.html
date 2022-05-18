@@ -2,36 +2,68 @@
 <html>
 <head>
 	<title>Home</title>
-	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+	<link href="src/static/test.css" rel="stylesheet"/>
 </head>
 <body>
-    <header>
-		<div class="container">
-		<div id="brandname">
-			Results of the similarity test
-		</div>
-		<h2>Here are multiple similar Instagram content creators:</h2>
-		
+  <div class="jumbotron">
+        
+		<div class="row" style="text-align: center;">
+		  <div class="col-md-12">
+			<h1 class="display-4" style="text-align: center;">The {{n}} most similar users to <u>{{username}}</u></h1>
+		  </div>
+    </div>
 	</div>
-	</header>
-{% block content %}
+  
 
+  <div class = 'row' style="text-align: left; padding-left: 5px;">
+    <table id='main_user' cellspacing="15">
+      <thead>
+        <tr>
+        {% for header in headers %}
+          <th>{{header}}</th>
+        {% endfor %}
+        </tr>
+      </thead>
+  
+      <tbody>
+      {% for object in objects%}	
+        <tr>
+      {% for item in object %}
+      {% if item == username%}
+          <td><a href={{"https://www.instagram.com/"+username}}>{{item}}<a></td>
+      {% else%}
+      <td>{{item}}</td>
+      {%endif%}
+      {% endfor %}
+        </tr>
+      {% endfor %}		
+      </tbody>
+    </table>
+  
+  </div>
 
-  <table id='result' class='display'>
+  <br/>
+  <p style="text-align: left; padding-left: 5px;">Now let's look at the similar profiles: </p>
+
+<div class = 'row' style="text-align: left; padding-left: 30px;">
+  <table id='similar_users' cellspacing="15" border="1">
     <thead>
       <tr>
-      {% for header in headers %}
+      {% for header in headers2 %}
         <th>{{header}}</th>
       {% endfor %}
       </tr>
     </thead>
 
     <tbody>
-    {% for object in objects %}	
+    {% for object in objects2 %}	
       <tr>
   	{% for item in object %}
-        <td>{{item}}</td>
+    {% if item in usernames%}
+        <td><a href={{"https://www.instagram.com/"+item}}>{{item}}</a></td>
+    {% else%}
+    <td>{{item}}</td>
+    {% endif%}
       {% endfor %}
       </tr>
     {% endfor %}		
@@ -39,6 +71,6 @@
   </table>
 
 
-{% endblock %}
+</div>
 </body>
 </html>
